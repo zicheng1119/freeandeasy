@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Free and Easy Brand Mark</title>
+  <desc id="desc">A monogram badge with the letters F and E.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#21453d" />
+      <stop offset="100%" stop-color="#0f2621" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4dfc0" />
+      <stop offset="100%" stop-color="#c88462" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)" />
+  <path d="M58 74h98v22H84v34h59v21H84v57H58Z" fill="#f8f2e8" />
+  <path d="M198 83c0 23-12 38-35 45 23 7 35 22 35 45v9h-24v-9c0-18-10-28-28-28h-16v37h-24V74h45c31 0 47 15 47 44Zm-68 42h18c18 0 26-7 26-22 0-14-8-21-26-21h-18Z" fill="url(#glow)" />
+</svg>

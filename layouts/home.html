@@ -1,0 +1,33 @@
+{{ define "main" }}
+  {{- $paginator := partial "helper/paginator.html" . -}}
+
+  <section class="hero-card">
+    <p class="hero-eyebrow">Free & Easy</p>
+    <h1>把简历留给首页，把故事留给这里。</h1>
+    <p>
+      这里是一个独立于 resume 的个人博客分站，用来记录项目、学习、观察和那些不适合塞进简历的一切。
+      它现在已经不是一个默认主题演示站，而是一份真正属于你自己的公开笔记。
+    </p>
+    <div class="hero-actions">
+      <a href="{{ "post" | relURL }}">开始阅读</a>
+      <a href="{{ "关于" | relURL }}">关于这个站</a>
+      <a href="https://zicheng1119.github.io/">返回 Resume</a>
+    </div>
+    <div class="hero-note">
+      站点结构：根域名用于 resume，`/freeandeasy/` 用于博客。
+    </div>
+  </section>
+
+  <section class="article-list">
+    {{ range $index, $element := $paginator.Pages }}
+      {{ partial "article-list/default" . }}
+    {{ end }}
+  </section>
+
+  {{- partial "pagination.html" . -}}
+  {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+  {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

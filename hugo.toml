@@ -1,0 +1,104 @@
+# This repository is intended to be deployed as a project site:
+# https://zicheng1119.github.io/freeandeasy/
+baseURL = "https://zicheng1119.github.io/freeandeasy/"
+locale = "zh-cn"
+defaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
+title = "Free & Easy"
+copyright = "Free & Easy"
+enableRobotsTXT = true
+
+[pagination]
+pagerSize = 5
+
+[permalinks]
+post = "/p/:slug/"
+page = "/:slug/"
+
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
+
+[params]
+  mainSections = ["post"]
+  rssFullContent = true
+
+  [params.dateFormat]
+    published = ":date_full"
+    lastUpdated = ":date_full"
+
+  [params.footer]
+    since = 2026
+    customText = "A field journal for projects, notes, and the life around them."
+
+  [params.sidebar]
+    avatar = "img/brand-mark.svg"
+    emoji = "🌿"
+    subtitle = "记录简历之外的思考、项目与生活。"
+
+  [params.article]
+    headingAnchor = false
+    math = false
+    toc = true
+    readingTime = true
+
+    [params.article.list]
+      showTags = false
+
+    [params.article.license]
+      enabled = false
+
+    [params.article.alertIcon]
+      note = "📝"
+      tip = "💡"
+      important = "📌"
+      warning = "⚠️"
+      caution = "🚨"
+
+  [params.widgets]
+    homepage = [
+      { type = "search" },
+      { type = "archives", params = { limit = 8 } },
+      { type = "categories", params = { limit = 10 } },
+      { type = "tag-cloud", params = { limit = 10 } }
+    ]
+    page = [{ type = "toc" }]
+
+  [params.colorScheme]
+    toggle = true
+    default = "light"
+
+  [params.comments]
+    enabled = false
+
+[[menus.social]]
+  identifier = "home"
+  name = "Resume"
+  url = "https://zicheng1119.github.io/"
+  [menus.social.params]
+    icon = "home"
+    newTab = false
+
+[[menus.social]]
+  identifier = "about"
+  name = "About"
+  url = "/关于/"
+  [menus.social.params]
+    icon = "user"
+    newTab = false
+
+[[menus.social]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/zicheng1119"
+  [menus.social.params]
+    icon = "brand-github"
+    newTab = true
+
+[[menus.social]]
+  identifier = "rss"
+  name = "RSS"
+  url = "/index.xml"
+  [menus.social.params]
+    icon = "rss"
+    newTab = true

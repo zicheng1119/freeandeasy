@@ -38,7 +38,7 @@ page = "/:slug/"
   [params.sidebar]
     avatar = "img/avator.jpg"
     emoji = "🌿"
-    subtitle = "记录简历之外的思考、项目与生活。"
+    subtitle = "记录我的思考、项目与生活。"
 
   [params.article]
     headingAnchor = false
@@ -114,13 +114,13 @@ page = "/:slug/"
           block = [["$$", "$$"], ["\\[", "\\]"]]
           inline = [["$", "$"], ["\\(", "\\)"]]
 
-[[menus.social]]
-  identifier = "home"
-  name = "Resume"
-  url = "https://zicheng1119.github.io/"
-  [menus.social.params]
-    icon = "home"
-    newTab = false
+#[[menus.social]]
+  #identifier = "home"
+  #name = "Resume"
+  #url = "https://zicheng1119.github.io/"
+  #[menus.social.params]
+   # icon = "home"
+    #newTab = false
 
 [[menus.social]]
   identifier = "about"

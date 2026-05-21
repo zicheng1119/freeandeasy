@@ -95,10 +95,4 @@ page = "/:slug/"
     icon = "brand-github"
     newTab = true
 
-[[menus.social]]
-  identifier = "rss"
-  name = "RSS"
-  url = "/index.xml"
-  [menus.social.params]
-    icon = "rss"
-    newTab = true
+

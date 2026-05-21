@@ -32,7 +32,7 @@ page = "/:slug/"
     customText = "A field journal for projects, notes, and the life around them."
 
   [params.sidebar]
-    avatar = "img/brand-mark.svg"
+    avatar = "img/avator.jpg"
     emoji = "🌿"
     subtitle = "记录简历之外的思考、项目与生活。"
 

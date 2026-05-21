@@ -254,6 +254,7 @@ class Search {
             this.doSearch(keywords.split(' '));
         }
 
+        this.form.addEventListener('submit', eventHandler);
         this.input.addEventListener('input', eventHandler);
         this.input.addEventListener('compositionend', eventHandler);
     }

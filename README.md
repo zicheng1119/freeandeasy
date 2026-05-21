@@ -6,6 +6,10 @@
 
 它现在已经是一个**不依赖外部主题仓库**的独立 Hugo 项目。
 
+完整使用说明见：
+
+[`docs/USAGE.md`](docs/USAGE.md)
+
 ## 你想要的结构
 
 - `zicheng1119.github.io`

@@ -8,6 +8,10 @@ title = "Free & Easy"
 copyright = "Free & Easy"
 enableRobotsTXT = true
 
+[taxonomies]
+category = "categories"
+tag = "tags"
+
 [pagination]
 pagerSize = 5
 
@@ -38,7 +42,7 @@ page = "/:slug/"
 
   [params.article]
     headingAnchor = false
-    math = false
+    math = true
     toc = true
     readingTime = true
 
@@ -68,8 +72,47 @@ page = "/:slug/"
     toggle = true
     default = "light"
 
+  [params.imageProcessing]
+    autoOrient = true
+
+    [params.imageProcessing.content]
+      enabled = true
+      widths = [480, 720, 960, 1280]
+
+    [params.imageProcessing.external]
+      timeout = "10s"
+
   [params.comments]
-    enabled = false
+    enabled = true
+    provider = "giscus"
+
+    [params.comments.giscus]
+      repo = "zicheng1119/freeandeasy"
+      repoID = "R_kgDOSjwyig"
+      category = "Announcements"
+      categoryID = "DIC_kwDOSjwyis4C9igk"
+      mapping = "pathname"
+      strict = "0"
+      reactionsEnabled = "1"
+      emitMetadata = "0"
+      inputPosition = "bottom"
+      initialTheme = "preferred_color_scheme"
+      lightTheme = "light"
+      darkTheme = "dark"
+      lang = "zh-CN"
+      loading = "lazy"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [["$$", "$$"], ["\\[", "\\]"]]
+          inline = [["$", "$"], ["\\(", "\\)"]]
 
 [[menus.social]]
   identifier = "home"
@@ -94,5 +137,3 @@ page = "/:slug/"
   [menus.social.params]
     icon = "brand-github"
     newTab = true
-
-

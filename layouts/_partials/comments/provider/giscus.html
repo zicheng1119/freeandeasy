@@ -1,16 +1,22 @@
 {{- with .Site.Params.comments.giscus -}}
+{{- $repo := .repo -}}
+{{- $repoID := .repoID -}}
+{{- $category := .category -}}
+{{- $categoryID := .categoryID -}}
+{{- $ready := and $repo $repoID $category $categoryID -}}
+{{- if $ready -}}
 <script
     src="https://giscus.app/client.js"
-    data-repo="{{- .repo -}}"
-    data-repo-id="{{- .repoID -}}"
-    data-category="{{- .category -}}"
-    data-category-id="{{- .categoryID -}}"
+    data-repo="{{- $repo -}}"
+    data-repo-id="{{- $repoID -}}"
+    data-category="{{- $category -}}"
+    data-category-id="{{- $categoryID -}}"
     data-mapping="{{- .mapping -}}"
     data-strict="{{- .strict -}}"
     data-reactions-enabled="{{- .reactionsEnabled -}}"
     data-emit-metadata="{{- .emitMetadata -}}"
     data-input-position="{{- .inputPosition -}}"
-    data-theme="{{- .lightTheme -}}"
+    data-theme="{{- default .lightTheme .initialTheme -}}"
     data-lang="{{- .lang -}}"
     data-loading="{{- .loading -}}"
     crossorigin="anonymous"
@@ -35,7 +41,7 @@
 
     (function () {
         addEventListener("message", (e) => {
-            if (event.origin !== "https://giscus.app") return;
+            if (e.origin !== "https://giscus.app") return;
             handler();
         });
         window.addEventListener("onColorSchemeChange", handler);
@@ -49,4 +55,11 @@
         }
     })();
 </script>
+{{- else if hugo.IsServer -}}
+<div class="article-content">
+    <p><strong>Giscus 尚未完成配置。</strong> 请先在 GitHub 仓库里开启 Discussions，再补上 <code>repoID</code> 和 <code>categoryID</code>。</p>
+</div>
+{{- else -}}
+<!-- Giscus is configured as the comment provider, but repoID/categoryID are still missing. -->
+{{- end -}}
 {{- end -}}

@@ -6,12 +6,18 @@ title = 'My Post'
 
 测试数学：$a\times b$
 
+再测试一个行内公式：$\int_0^1 x^2\,dx=\frac{1}{3}$
+
 测试公式：
 
 $$
 a\times b
 $$
 
+$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$
+
 测试图片：
 
-![tupian]()
+![头像示例](figures/avator.jpg)

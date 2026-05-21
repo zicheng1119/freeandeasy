@@ -223,6 +223,46 @@ image: cover.jpg
 
 这种方式最稳，因为 Hugo 会把文章目录当作 Page Bundle 处理。
 
+如果你是从本地 Markdown 编辑器里直接复制内容，注意这几点：
+
+- 尽量不要写空图片地址，比如 `![]()`，上线后会直接变成失效图片
+- 最稳的方式是把图片放进文章目录，使用相对路径，比如 `![图注](figures/demo.png)`
+- 如果你用了原生 HTML 标签，例如 `<img>`、`<figure>`，当前配置也已经允许 Hugo 原样输出
+
+---
+
+## 5.1 数学公式怎么写
+
+站点已经启用了 KaTeX 和 Goldmark passthrough，推荐直接写：
+
+行内公式：
+
+```md
+$E=mc^2$
+```
+
+块级公式：
+
+```md
+$$
+\int_0^1 x^2\,dx=\frac{1}{3}
+$$
+```
+
+也支持：
+
+```md
+\(
+a^2+b^2=c^2
+\)
+```
+
+```md
+\[
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\]
+```
+
 ---
 
 ## 6. 页面类型与内容目录约定
@@ -439,16 +479,37 @@ copyright = "Free & Easy"
 
 ```toml
 [params.comments]
-  enabled = false
+  enabled = true
+  provider = "giscus"
 ```
 
-如果以后你想接入评论，需要：
+当前仓库已经接好了 `giscus` 模板，但要真正显示评论，你还需要在 GitHub 上完成一次 Discussions 配置：
 
-1. 改成 `enabled = true`
-2. 再补对应评论系统参数
-3. 检查模板是否渲染正常
+1. 进入 `zicheng1119/freeandeasy` 仓库设置页，开启 `Discussions`
+2. 新建或使用一个分类，常见可用 `Announcements`
+3. 打开 `https://giscus.app/zh-CN`，填入仓库信息
+4. 把生成的 `repoID` 和 `categoryID` 填回 `hugo.toml`
 
-目前仓库里虽然保留了多种评论 provider 模板，但还没有配置具体服务。
+对应配置位置：
+
+```toml
+[params.comments.giscus]
+  repo = "zicheng1119/freeandeasy"
+  repoID = ""
+  category = "Announcements"
+  categoryID = ""
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  lightTheme = "light"
+  darkTheme = "dark"
+  lang = "zh-CN"
+  loading = "lazy"
+```
+
+如果 `repoID` 或 `categoryID` 还没填，站点不会报错，但线上也不会显示评论框。
 
 ---
 

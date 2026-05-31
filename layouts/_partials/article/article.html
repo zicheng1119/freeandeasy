@@ -22,6 +22,24 @@
     {{ partial "article/components/footer" . }}
 
     {{ if or .Params.math .Site.Params.article.math }}
-        {{ partialCached "article/components/math.html" . }}
+ {{ partialCached "article/components/math.html" . }}
     {{ end }}
 </article>
+
+{{ if .IsPage }}
+    {{ if or .PrevInSection .NextInSection }}
+    <nav class="post-nav section-card">
+        {{ with .PrevInSection }}<a class="post-nav-prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+        {{ with .NextInSection }}<a class="post-nav-next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    </nav>
+    {{ end }}
+
+    {{ with first 3 (.Site.RegularPages.Related .) }}
+    <section class="related-posts section-card">
+        <h2 class="section-title">相关文章</h2>
+ <ul>
+     {{ range . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+        </ul>
+    </section>
+    {{ end }}
+{{ end }}

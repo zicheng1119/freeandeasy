@@ -15,6 +15,17 @@ tag = "tags"
 [pagination]
 pagerSize = 5
 
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+ name = "tags"
+  weight = 100
+  [[related.indices]]
+    name = "categories"
+    weight = 80
+
 [permalinks]
 post = "/p/:slug/"
 page = "/:slug/"

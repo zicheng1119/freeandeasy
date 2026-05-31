@@ -1,0 +1,8 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $ratio := .Get "ratio" | default "16x9" -}}
+{{- $pct := "56.25%" -}}
+{{- if eq $ratio "4x3" }}{{ $pct = "75%" }}{{ end -}}
+{{- if eq $ratio "1x1" }}{{ $pct = "100%" }}{{ end -}}
+<div class="embed-responsive" style="padding-bottom: {{ $pct }}">
+    <iframe src="{{ $src }}" loading="lazy" allowfullscreen title="embed"></iframe>
+</div>

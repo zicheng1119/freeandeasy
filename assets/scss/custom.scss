@@ -26,21 +26,21 @@
 }
 
 :root[data-scheme="dark"] {
-  --body-background: #151a17;
-  --accent-color: #d6c3a1;
-  --accent-color-darker: #f3e5cc;
+  --body-background: #1d221e;
+  --accent-color: #cdba98;
+  --accent-color-darker: #e3d2b2;
   --accent-color-text: #1b1d1a;
-  --body-text-color: rgba(240, 232, 220, 0.72);
-  --card-background: rgba(28, 34, 30, 0.88);
-  --card-background-selected: rgba(214, 195, 161, 0.08);
-  --card-text-color-main: rgba(255, 248, 239, 0.92);
-  --card-text-color-secondary: rgba(255, 248, 239, 0.72);
-  --card-text-color-tertiary: rgba(255, 248, 239, 0.5);
-  --card-separator-color: rgba(214, 195, 161, 0.14);
-  --blockquote-background-color: rgba(214, 195, 161, 0.08);
-  --tr-even-background-color: rgba(214, 195, 161, 0.05);
-  --code-background-color: rgba(214, 195, 161, 0.08);
-  --code-text-color: #f0d0bd;
+  --body-text-color: rgba(226, 218, 205, 0.7);
+  --card-background: rgba(38, 44, 40, 0.9);
+  --card-background-selected: rgba(205, 186, 152, 0.08);
+  --card-text-color-main: rgba(230, 223, 210, 0.88);
+  --card-text-color-secondary: rgba(230, 223, 210, 0.64);
+  --card-text-color-tertiary: rgba(230, 223, 210, 0.44);
+  --card-separator-color: rgba(205, 186, 152, 0.14);
+  --blockquote-background-color: rgba(205, 186, 152, 0.08);
+  --tr-even-background-color: rgba(205, 186, 152, 0.05);
+  --code-background-color: rgba(205, 186, 152, 0.08);
+  --code-text-color: #ecccb9;
 }
 
 html {
@@ -240,4 +240,154 @@ body {
   .hero-actions a {
     width: 100%;
   }
+}
+
+// Reading progress bar
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 0;
+  height: 3px;
+  background: var(--accent-color);
+  transition: width 0.1s linear;
+}
+
+// Back-to-top button
+#back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: var(--accent-color-text);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  box-shadow: var(--shadow-l2);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#back-to-top.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+// Image lightbox
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+  background: rgba(20, 17, 12, 0.86);
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.show {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: var(--shadow-l2);
+}
+
+// PDF embed (pdf shortcode)
+.pdf-embed {
+  margin: var(--section-separation, 24px) 0;
+}
+
+.pdf-embed iframe {
+  width: 100%;
+  border: 1px solid var(--card-separator-color);
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+}
+
+.pdf-embed .pdf-fallback {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 1.35rem;
+  color: var(--accent-color);
+}
+
+// Responsive interactive embed (embed shortcode)
+.embed-responsive {
+  position: relative;
+  width: 100%;
+  margin: var(--section-separation, 24px) 0;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.embed-responsive iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+// Scroll entrance animations (skip under reduced motion)
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+  opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Post navigation + related posts
+.post-nav {
+  display: flex;
+  gap: 16px;
+  margin-top: var(--section-separation, 24px);
+  padding: 18px 22px;
+}
+
+.post-nav a {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.post-nav-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.related-posts {
+  margin-top: var(--section-separation, 24px);
+  padding: 18px 22px;
+}
+
+.related-posts ul {
+  margin: 10px 0 0;
+  padding-left: 1.2em;
+}
+
+.related-posts li {
+  margin: 6px 0;
+}
+
+.related-posts a {
+  color: var(--accent-color);
 }

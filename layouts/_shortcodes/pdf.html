@@ -1,0 +1,6 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $height := .Get "height" | default "600" -}}
+<div class="pdf-embed">
+    <iframe src="{{ $src }}" height="{{ $height }}" loading="lazy" title="PDF"></iframe>
+    <a class="pdf-fallback" href="{{ $src }}" target="_blank" rel="noopener">在新标签打开 / 下载 PDF ↗</a>
+</div>
